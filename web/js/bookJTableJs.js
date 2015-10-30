@@ -1,8 +1,9 @@
 $(document).ready(function() {
         $('#BookContainer').jtable({
                 title : 'Book Inventory',
-               // paging: true, //Set paging enabled
-               // pageSize: 3, //Set page size
+                paging: true, //Set paging enabled
+                pageSize: 10, //Set page size
+                sorting: true,
                 actions : {
                         listAction :   'Controller?action=list',
                         createAction : 'Controller?action=create',
@@ -14,7 +15,7 @@ $(document).ready(function() {
                                 title : 'Book Id',
                                 width : '5%',
                                 key : true,
-                                list : true,
+                                list : false,
                                 edit : false,
                                 create : true
                         },
@@ -53,6 +54,22 @@ $(document).ready(function() {
                             width : '5%',
                             edit : true
                         }
+                },
+                toolbar: {
+                    items: [{
+                        icon: '/images/excel.png',
+                        text: 'Export to Excel',
+                        click: function () {
+                            //perform your custom job...
+                        	//alert("Excel clicked");
+                        }
+                    },{
+                        icon: '/images/pdf.png',
+                        text: 'Export to Pdf',
+                        click: function () {
+                            //perform your custom job...
+                        }
+                    }]
                 }
         });
         $('#BookContainer').jtable('load');

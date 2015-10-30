@@ -40,10 +40,10 @@ public class BookDao {
         }
 }
 
-	public List<Books> getAllBooks() {
+	public List<Books> getAllBooks(int startPageIndex, int numRecordsPerPage) {
         List<Books> booksList = new ArrayList<Books>();
 
-        String query = "SELECT * FROM Books ORDER BY BOOKID";
+        String query = "SELECT * FROM Books ORDER BY BOOKID limit " +startPageIndex + ", " + numRecordsPerPage;
         try {
                 Statement stmt = dbConnection.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
@@ -94,6 +94,25 @@ public class BookDao {
         } catch (SQLException e) {
                 System.err.println(e.getMessage());
         }
+	}
+
+	public int getUserCount() {
+		
+		String countQuery = "select count(*) as count from books";
+		int count=0;
+		 try {
+			
+			 Statement stmt = dbConnection.createStatement();
+             ResultSet rs = stmt.executeQuery(countQuery);
+             
+		   while (rs.next()) {
+		   count=rs.getInt("count");
+		  }
+		 } catch (SQLException e) {
+		  e.printStackTrace();
+		 }
+		 return count;
+		
 	}
 
 }

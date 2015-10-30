@@ -57,10 +57,18 @@ public class BookController extends HttpServlet {
             	try
                 {                                                                       
                 // Fetch Data from Books Table
-            	booksList = dao.getAllBooks();
+                int startPageIndex = Integer.parseInt(request.getParameter("jtStartIndex"));
+            	int numRecordsPerPage = Integer.parseInt(request.getParameter("jtPageSize"));	
+            	
+            	booksList = dao.getAllBooks(startPageIndex, numRecordsPerPage);
+            	
+            	//Get Total Record Count for Pagination
+                int userCount = dao.getUserCount();
+                
                 //Return in the format required by jTable plugin
                 JSONROOT.put("Result", "OK");
                 JSONROOT.put("Records", booksList);
+                JSONROOT.put("TotalRecordCount", userCount);
                 // Convert Java Object to Json
                 String jsonArray = gson.toJson(JSONROOT);
                 System.out.println(jsonArray);

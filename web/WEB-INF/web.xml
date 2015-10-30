@@ -4,7 +4,6 @@
   <welcome-file-list>
     <welcome-file>managebooks.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <description></description>
     <display-name>Controller</display-name>
@@ -16,5 +15,15 @@
     <url-pattern>/Controller</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <description></description>
+    <display-name>SearchOrder</display-name>
+    <servlet-name>SearchOrder</servlet-name>
+    <servlet-class>com.atl.mb.controller.SearchOrderController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchOrder</servlet-name>
+    <url-pattern>/SearchOrder</url-pattern>
+  </servlet-mapping>
   
 </web-app>

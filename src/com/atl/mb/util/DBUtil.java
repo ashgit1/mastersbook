@@ -31,7 +31,7 @@ public class DBUtil {
 		Connection con = null;
 		try {
 			con = DriverManager.getConnection(url,uname,passwd);
-			System.out.println("Connection to timetracker establish...");
+			System.out.println("Connection to mb establish...");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
