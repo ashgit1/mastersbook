@@ -16,4 +16,10 @@ public class MbConstants {
 					+ "b.bookid in "
 					+ "(select bookid from orders_books where orderid = 1001)";
 	
+	public static String BOOKSTABLE = "books";
+	public static String USERSTABLE = "users";
+	public static String ORDERSTABLE = "orders";
+	public static String USERSORDERSTABLE = "users_orders";
+	public static String ORDERSBOOKSTABLE = "orders_books";
+	
 }

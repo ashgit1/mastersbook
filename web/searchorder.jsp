@@ -6,6 +6,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Search</title>
+<script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script>
+
+function checkSearchParameter(){
+
+	var searchParameter = document.getElementById('searchParameterID');
+	if($('input:radio:checked').length == 0){
+		alert('Please select a search criteria to continue');
+		return false;
+	}else if(searchParameter.value==""){
+		alert('Please enter search criteria');
+		searchParameter.focus();
+		return false;
+	}else if(searchParameter.value!=""){
+		return true;
+		// code to validation based on emailid or order id...
+	}
+}
+
+</script>
 </head>
 <body>
 <center>
@@ -15,8 +35,9 @@ Search Your Orders By : <br>
 <input type="radio" name="searchCriteria" value="EID"/>Email ID
 <input type="radio" name="searchCriteria" value="OID"/>Order Id
 <!-- <label for="search">Type:</label> -->
-<input type="text" name="searchParameter" size="30" />
-<input type="submit" value="Submit the search" />
+<input type="text" name="searchParameter" id="searchParameterID" size="30" 
+		id="usrEmail" onblur="return checkEmail('usrEmail');"/>
+<input type="submit" value="Submit the search" onclick="return checkSearchParameter();"/>
 </form>
 
 <hr>

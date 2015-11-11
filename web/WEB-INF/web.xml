@@ -26,4 +26,14 @@
     <url-pattern>/SearchOrder</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <description></description>
+    <display-name>GetTable</display-name>
+    <servlet-name>GetTable</servlet-name>
+    <servlet-class>com.atl.mb.controller.GenericTableController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetTable</servlet-name>
+    <url-pattern>/GetTable</url-pattern>
+  </servlet-mapping>
 </web-app>
