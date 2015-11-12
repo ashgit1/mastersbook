@@ -20,10 +20,61 @@ function checkSearchParameter(){
 		searchParameter.focus();
 		return false;
 	}else if(searchParameter.value!=""){
-		return true;
-		// code to validation based on emailid or order id...
+		if(checkValueBasedOnSelection(searchParameter.value)==false){
+			return false;
+		}
 	}
 }
+
+function checkValueBasedOnSelection(value){
+	
+	//alert("value id check : " + value);
+	var searchParameter  = document.getElementById("searchParameterID");
+	
+	if(document.getElementById('eid').checked) {
+			//alert(" eid is selected...");
+			if(checkEmail(value)==false){
+				return false;	
+			}
+		}else if(document.getElementById('oid').checked) {
+			//alert(" oid is selected...");
+			if(num_req(searchParameter,"Please enter valid Order Id")==false){
+				searchParameter.value="";
+				searchParameter.focus();
+				return false;
+				}
+		}
+}
+
+function num_req(field,alertmsg)
+{
+		with(field)
+		{
+			if(isNaN(value)==true)
+				{
+				alert(alertmsg);
+				return false;
+				}
+			else
+				{
+				return true;
+				}
+		} 
+}
+
+function checkEmail(value){
+	
+	  var email=value;
+	  var searchParameter  = document.getElementById("searchParameterID");
+	  //alert("in check email : " + email);
+	  var atpos=email.indexOf("@");
+	  var dotpos=email.lastIndexOf(".");
+		if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= email.length){
+	  		alert("Not a valid e-mail address!!! Please enter a valid e-mail address");
+	  		searchParameter.focus();
+	  		return false;
+	  	}
+	}
 
 </script>
 </head>
@@ -32,11 +83,10 @@ function checkSearchParameter(){
 
 <form method="post" action="/mastersbook/SearchOrder">
 Search Your Orders By : <br>
-<input type="radio" name="searchCriteria" value="EID"/>Email ID
-<input type="radio" name="searchCriteria" value="OID"/>Order Id
+<input type="radio" name="searchCriteria" id="eid" value="EID"/>Email ID
+<input type="radio" name="searchCriteria" id="oid" value="OID"/>Order Id
 <!-- <label for="search">Type:</label> -->
-<input type="text" name="searchParameter" id="searchParameterID" size="30" 
-		id="usrEmail" onblur="return checkEmail('usrEmail');"/>
+<input type="text" name="searchParameter" id="searchParameterID" size="30" />
 <input type="submit" value="Submit the search" onclick="return checkSearchParameter();"/>
 </form>
 
