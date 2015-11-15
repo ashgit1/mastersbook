@@ -45,7 +45,7 @@ public class GenericTableController extends HttpServlet {
 		
 		try {
 			if(tableName.equals(MbConstants.BOOKSTABLE)){
-				booksList = tableDao.getBooksTable1();
+				booksList = tableDao.getBooksTable();
 				request.setAttribute("bookList", booksList);
 			}else if(tableName.equals(MbConstants.USERSTABLE)){
 				usersList = tableDao.getUsersTable();
