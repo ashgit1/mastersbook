@@ -12,7 +12,7 @@ public class DBUtil {
 	*/
 	
 	private static String driver = "com.mysql.jdbc.Driver";
-	private static String url = "jdbc:mysql://localhost:3306/mb";
+	private static String url = "jdbc:mysql://127.0.0.1:3306/mb";
 	private static String uname = "root";
 	private static String passwd = "Root@123";
 
