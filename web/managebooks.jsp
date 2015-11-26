@@ -16,9 +16,27 @@
 
 </head>
 <body>
-	<div style="text-align: center;">
-		<h2>MastersBook Inventory House</h2>
-		<div id="BookContainer"></div>
-	</div>
+<center>
+
+<div class="filtering">
+    <form>
+        Book Title: <input type="text" name="title" id="title" />
+        Author First Name: 
+        <select id="authorFName" name="authorFName">
+            <option selected="selected" value="ALL">All Authors</option>
+            <option value="Ashish">Ashish</option>
+            <option value="Tanya">Tanya</option>
+        </select>
+        <button type="submit" id="LoadRecordsButton">Search Books</button>
+    </form>
+</div>
+
+
+<div style="text-align: center;">
+	<h2>MastersBook Inventory House</h2>
+	<div id="BookContainer"></div>
+</div>
+
+</center>	
 </body>
 </html>

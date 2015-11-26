@@ -40,13 +40,36 @@ public class BookDao {
         }
 }
 
-	public List<Books> getAllBooks(int startPageIndex, int numRecordsPerPage) {
+	public List<Books> getAllBooks(String title, String authorFname, int startPageIndex, int numRecordsPerPage) {
         List<Books> booksList = new ArrayList<Books>();
 
-        String query = "SELECT * FROM Books ORDER BY BOOKID limit " +startPageIndex + ", " + numRecordsPerPage;
+        String fetchBooksQuery=null;
         try {
-                Statement stmt = dbConnection.createStatement();
-                ResultSet rs = stmt.executeQuery(query);
+        	
+        if(title.equals("") && authorFname.equals("ALL")){
+        	System.out.println("hello");
+        	fetchBooksQuery = "SELECT * FROM Books ORDER BY BOOKID limit " +startPageIndex + ", " + numRecordsPerPage;
+        	pStmt = dbConnection.prepareStatement(fetchBooksQuery);
+        }else if(title!="" && !authorFname.equals("ALL")){
+        	System.out.println("title:: " + title + ", name:: " +authorFname);
+        	fetchBooksQuery = "select * from Books where title like '%" +title+ "%' and authorfname='"+authorFname+"'" +
+        			          " ORDER BY BOOKID limit " +startPageIndex + ", " + numRecordsPerPage;
+        	pStmt = dbConnection.prepareStatement(fetchBooksQuery);
+        	//pStmt.setString(1, "%" + title + "%");//pStmt.setString(2, authorFname);
+        	System.out.println("query:: " +fetchBooksQuery);
+        }else if(title!="" && authorFname.equals("ALL")){
+        	System.out.println("title::: " + title + ", name::: " +authorFname);
+        	fetchBooksQuery="select * from books where bookid in (select bookid from books where title LIKE '%"+title+"%')" +
+        			" ORDER BY BOOKID limit " +startPageIndex + ", " + numRecordsPerPage;
+        	System.out.println("query::: " +fetchBooksQuery);
+        }else if(title.equals("") && !authorFname.equals("ALL")){
+        	System.out.println("title:::: " + title + ", name:::: " +authorFname);
+        	fetchBooksQuery = "select * from books where bookid in (select bookid from books where authorfname='"+authorFname+"')" +
+        			" ORDER BY BOOKID limit " +startPageIndex + ", " + numRecordsPerPage;
+        	System.out.println("query:::: " +fetchBooksQuery);
+        }
+        
+                ResultSet rs = pStmt.executeQuery(fetchBooksQuery);
                 while (rs.next()) {
                 	Books book = new Books();
                 	book.setBookId(rs.getInt("bookid"));
@@ -96,12 +119,24 @@ public class BookDao {
         }
 	}
 
-	public int getUserCount() {
+	public int getUserCount(String title, String authorFname) {
 		
 		String countQuery = "select count(*) as count from books";
 		int count=0;
-		 try {
-			
+		
+		try {
+		if(title.equals("") && authorFname.equals("ALL")){
+        	countQuery = "select count(*) as count from books";
+        	pStmt = dbConnection.prepareStatement(countQuery);
+        }else if(title!="" && !authorFname.equals("ALL")){
+        	countQuery = "select count(*) as count from books where title like '%" +title+ "%' and authorfname='"+authorFname+"'";
+        	pStmt = dbConnection.prepareStatement(countQuery);
+        }else if(title!="" && authorFname.equals("ALL")){
+        	countQuery="select count(*) as count from books where bookid in (select bookid from books where title LIKE '%"+title+"%')";
+        }else if(title.equals("") && !authorFname.equals("ALL")){
+        	countQuery = "select count(*) as count from books where bookid in (select bookid from books where authorfname='"+authorFname+"')";
+        }
+		
 			 Statement stmt = dbConnection.createStatement();
              ResultSet rs = stmt.executeQuery(countQuery);
              

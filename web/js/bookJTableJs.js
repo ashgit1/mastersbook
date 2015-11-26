@@ -62,6 +62,7 @@ $(document).ready(function() {
                         click: function () {
                             //perform your custom job...
                         	//alert("Excel clicked");
+                        	//tableToExcel('BookContainer','Table Export');
                         }
                     },{
                         icon: '/images/pdf.png',
@@ -72,5 +73,18 @@ $(document).ready(function() {
                     }]
                 }
         });
-        $('#BookContainer').jtable('load');
+        
+        //$('#BookContainer').jtable('load');
+        
+        //Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+            $('#BookContainer').jtable('load', {
+            	title: $('#title').val(),
+            	authorFName: $('#authorFName').val()
+            });
+        });
+ 
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
 });

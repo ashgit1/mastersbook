@@ -45,6 +45,11 @@ public class BookController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String action = request.getParameter("action");
+		String titleToSerach = request.getParameter("title");
+		String fnameToSearch = request.getParameter("authorFName");
+		
+		System.out.println("title: " + titleToSerach + ", fname: " + fnameToSearch);;
+		
         if ( action != null) 
         {
         	List<Books> booksList = new ArrayList<Books>();
@@ -60,10 +65,10 @@ public class BookController extends HttpServlet {
                 int startPageIndex = Integer.parseInt(request.getParameter("jtStartIndex"));
             	int numRecordsPerPage = Integer.parseInt(request.getParameter("jtPageSize"));	
             	
-            	booksList = dao.getAllBooks(startPageIndex, numRecordsPerPage);
+            	booksList = dao.getAllBooks(titleToSerach, fnameToSearch, startPageIndex, numRecordsPerPage);
             	
             	//Get Total Record Count for Pagination
-                int userCount = dao.getUserCount();
+                int userCount = dao.getUserCount(titleToSerach, fnameToSearch);
                 
                 //Return in the format required by jTable plugin
                 JSONROOT.put("Result", "OK");
@@ -71,7 +76,7 @@ public class BookController extends HttpServlet {
                 JSONROOT.put("TotalRecordCount", userCount);
                 // Convert Java Object to Json
                 String jsonArray = gson.toJson(JSONROOT);
-                System.out.println(jsonArray);
+                //System.out.println("Book Jsaon: " + jsonArray);
 
                 response.getWriter().print(jsonArray);
                 }
