@@ -45,7 +45,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 <body>
 
-<jsp:include page="includesPage/mainHeaders/_header.jsp"></jsp:include>
+<!-- header -->
+	<%-- <jsp:include page="includesPage/mainHeaders/_header.jsp"></jsp:include> --%>
+
+	<%
+		if (session.getAttribute("user") == null) {// THen new user, show join now
+	%>
+	<jsp:include page="includesPage/mainHeaders/_header.jsp"></jsp:include>
+	<%
+		} else {
+	%>
+	<jsp:include page="includesPage/mainHeaders/_logout.jsp"></jsp:include>
+	<%
+		}
+	%>
+<!-- //header -->
 <jsp:include page="includesPage/mainHeaders/_navigation.jsp"></jsp:include>
 
 <!-- Product page begins -->

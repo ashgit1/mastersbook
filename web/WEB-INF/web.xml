@@ -14,7 +14,6 @@
     <servlet-name>Controller</servlet-name>
     <url-pattern>/Controller</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>SearchOrder</display-name>
@@ -25,7 +24,6 @@
     <servlet-name>SearchOrder</servlet-name>
     <url-pattern>/SearchOrder</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>GetTable</display-name>
@@ -35,5 +33,35 @@
   <servlet-mapping>
     <servlet-name>GetTable</servlet-name>
     <url-pattern>/GetTable</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RegisterServlet</display-name>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>com.atl.mb.controller.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.atl.mb.controller.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logoutServlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.atl.mb.controller.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/loginServlet</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -42,138 +42,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 <body>
 <!-- header -->
-	
+	<%-- <jsp:include page="includesPage/mainHeaders/_header.jsp"></jsp:include> --%>
+
+	<%
+		if (session.getAttribute("user") == null) {// THen new user, show join now
+	%>
+	<jsp:include page="includesPage/mainHeaders/_header.jsp"></jsp:include>
+	<%
+		} else {
+	%>
+	<jsp:include page="includesPage/mainHeaders/_logout.jsp"></jsp:include>
+	<%
+		}
+	%>
 <!-- //header -->
-<!-- top-header -->
-<div class="top_bg">
-	<div class="container">
-		<div class="header_top-sec">
-			<div class="top_right">
-				<ul>
-					<li><a href="contact.html">Contact</a></li>|
-					<li><a href="login.html">Track Order</a></li>
-				</ul>
-			</div>
-			<div class="top_left">
-				<ul>
-					<li class="top_link">Email:<a href="mailto:info@example.com">info@example.com</a></li>|
-					<li class="top_link"><a href="login.html">My Account</a></li>					
-				</ul>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-</div>
-<!-- top-header -->
-<!-- logo-cart -->
-<div class="header_top">
-	<div class="container">
-		<div class="logo">
-		 	<a href="index.jsp">Masters Books</a>			 
-		</div>
-		<div class="header_right">
-			<div class="cart box_1">
-				<a href="checkout.html">
-				<h3> <div class="total">
-					<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-					<img src="images/cart1.png" alt=""/></h3>
-				</a>
-				<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-				<div class="clearfix"> </div>
-			</div>				 
-		</div>
-		<div class="clearfix"></div>	
-	</div>
-</div>
-<!-- //logo-cart -->
-<!------>
-<div class="mega_nav">
-	 <div class="container">
-		 <div class="menu_sec">
-		 <!-- start header menu -->
-		<ul class="megamenu skyblue">
-			<li class="active grid"><a class="color1" href="index.jsp">Home</a></li>
-			<li class="grid"><a class="color1" href="#">Books</a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								<h4>First Semester</h4>
-								<ul>
-									<li><a href="products.jsp">Cloud Computing</a></li>
-									<li><a href="products.jsp">Operation Research</a></li>
-									<li><a href="products.jsp">Data Structures</a></li>
-									<li><a href="products.jsp">Operation System</a></li>
-									<li><a href="products.jsp">Cloud in Action</a></li>									
-									<li><a href="products.jsp">Unix Shell</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Second Semester</h4>
-								<ul>
-									<li><a href="products.jsp">Cloud Computing</a></li>
-									<li><a href="products.jsp">Operation Research</a></li>
-									<li><a href="products.jsp">Data Structures</a></li>
-									<li><a href="products.jsp">Operation System</a></li>
-									<li><a href="products.jsp">Cloud in Action</a></li>									
-									<li><a href="products.jsp">Unix Shell</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Third Semester</h4>
-								<ul>
-									<li><a href="products.jsp">Cloud Computing</a></li>
-									<li><a href="products.jsp">Operation Research</a></li>
-									<li><a href="products.jsp">Data Structures</a></li>
-									<li><a href="products.jsp">Operation System</a></li>
-									<li><a href="products.jsp">Cloud in Action</a></li>									
-									<li><a href="products.jsp">Unix Shell</a></li>
-								</ul>	
-							</div>												
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Fourth Semester</h4>
-								<ul>
-									<li><a href="products.jsp">Cloud Computing</a></li>
-									<li><a href="products.jsp">Operation Research</a></li>
-									<li><a href="products.jsp">Data Structures</a></li>
-									<li><a href="products.jsp">Operation System</a></li>
-									<li><a href="products.jsp">Cloud in Action</a></li>									
-									<li><a href="products.jsp">Unix Shell</a></li>
-								</ul>	
-							</div>						
-						</div>
-					</div>
-					<div class="row">
-						<div class="col2"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-						<div class="col1"></div>
-					</div>
-    			</div>
-			</li>
-			<li class="active grid"><a class="color1" href="about_us.jsp">About Us</a></li>				
-			<li class="active grid"><a class="color1" href="products.jsp">Products</a></li>
-			<li class="active grid"><a class="color1" href="contact_us.jsp">Contact Us</a></li>				
-			<li class="active grid"><a class="color1" href="faq.jsp">FAQ</a></li>								
-		</ul> 
-			<div class="search">
-				 <form>
-					<input type="text" value="" placeholder="Search...">
-					<input type="submit" value="">
-					</form>
-			</div>
-			<div class="clearfix"></div>
-		 </div>
-	  </div>
-</div>
-<!---->
+
+<!-- Navigation-->
+	<jsp:include page="includesPage/mainHeaders/_navigation.jsp"></jsp:include>
+<!-- Navigation End-->
+
 <!-- cate -->
 	<div class="cate">
 		<div class="container">
@@ -260,45 +147,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- banner-bottom -->
 
 <!-- footer -->
-	<div class="footer">
-		<div class="container">
-			<div class="col-md-3 footer-grid">
-				<h6>About us</h6>
-				<p>Suspendisse sed accumsan risus. Curabitur rhoncus, elit vel tincidunt elementum, nunc urna tristique nisi, in interdum libero magna tristique ante. adipiscing varius. Vestibulum dolor lorem.</p>
-			</div>
-			<div class="col-md-3 footer-grid">
-				<h6>Information</h6>
-				<ul>
-					<li><a href="#">About Us</a></li>
-					<li><a href="#">Delivery Information</a></li>
-					<li><a href="#">Privacy Policy</a></li>
-					<li><a href="#">Terms &amp; Conditions</a></li>
-				</ul>
-			</div>
-			<div class="col-md-3 footer-grid">
-				<h6>My Account</h6>
-				<ul>
-					<li><a href="login.html">My Account</a></li>
-					<li><a href="#">Order History</a></li>
-					<li><a href="#">Wish List</a></li>
-					<li><a href="#">Newsletter</a></li>
-				</ul>
-			</div>
-			<div class="col-md-3 footer-grid">
-				<h6>Extras</h6>
-				<ul>
-					<li><a href="#">Brands</a></li>
-					<li><a href="#">Gift Vouchers</a></li>
-					<li><a href="#">Affiliates</a></li>
-					<li><a href="#">Specials</a></li>
-				</ul>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-	<div class="footer-copy">
-		<p>© 2015 Pendent Store. All rights reserved | Design by <a href="http://w3layouts.com/"> W3layouts</a></p>
-	</div>
+<jsp:include page="includesPage/mainHeaders/_footer.jsp"></jsp:include>
 <!-- //footer -->
 </body>
 </html>

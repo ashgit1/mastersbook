@@ -7,14 +7,14 @@
 		<div class="header_top-sec">
 			<div class="top_right">
 				<ul>
-					<li><a href="contact.html">Contact</a></li>|
-					<li><a href="login.html">Track Order</a></li>
+					<li><a href="contact_us.jsp">Contact</a></li>|
+					<li><a href="track_order.jsp">Track Order</a></li>
 				</ul>
 			</div>
 			<div class="top_left">
 				<ul>
-					<li class="top_link">Email:<a href="mailto:info@example.com">info@example.com</a></li>|
-					<li class="top_link"><a href="login.html">My Account</a></li>					
+					<!-- <li class="top_link">Email:<a href="mailto:info@example.com">info@example.com</a></li>| -->
+					<li class="top_link"><a href="mblogin.jsp">Join Now</a></li>					
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -28,7 +28,7 @@
 		<div class="logo">
 		 	<a href="index.jsp">Masters Books</a>			 
 		</div>
-		<div class="header_right">
+		<!-- <div class="header_right">
 			<div class="cart box_1">
 				<a href="checkout.html">
 				<h3> <div class="total">
@@ -38,7 +38,7 @@
 				<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 				<div class="clearfix"> </div>
 			</div>				 
-		</div>
+		</div> -->
 		<div class="clearfix"></div>	
 	</div>
 </div>
